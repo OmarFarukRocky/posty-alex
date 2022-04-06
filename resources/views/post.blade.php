@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <div class="card">                   
                     <div class="card-body">
                         <form action="{{ route('post') }}" method="post">
@@ -17,10 +17,21 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Post</button>
-                        </form>                        
+                        </form>  
+                        
+                        <div class="my-3">
+                            @foreach ($posts as $post)
+                            <h4>Author: {{ $post->user->name }}</h4>
+                            <p> Description: {{ $post->body }} <br> <span>Post Created at: {{ $post->created_at->diffForHumans() }}</span></p>
+                            
+                            @endforeach
+                           
+                        </div>
                     </div>
                 </div>
+                {{ $posts->links() }}
             </div>
+            
         </div>
     </div>
 @endsection
