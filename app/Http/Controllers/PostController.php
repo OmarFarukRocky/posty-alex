@@ -10,4 +10,14 @@ class PostController extends Controller
     {
         return view('post');
     }
+
+    public function store(Request $request)
+    {
+
+       
+      $request->validate([
+          'body'=>'required'
+      ]);
+      return back();
+    }
 }

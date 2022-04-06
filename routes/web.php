@@ -14,3 +14,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('post',[PostController::class,'index'])->name('post');
+Route::post('post',[PostController::class,'store']);
