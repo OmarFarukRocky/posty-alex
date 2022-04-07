@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Post;
+use App\Models\Profile;
+
+
 
 class User extends Authenticatable
 {
@@ -23,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_path'
     ];
 
     /**
@@ -47,5 +51,10 @@ class User extends Authenticatable
     public function posts()
     {
        return $this->hasMany(Post::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }
